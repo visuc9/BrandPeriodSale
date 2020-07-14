@@ -1,0 +1,147 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.960
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{596CAA29-DD80-45D1-A06F-AE7155237282}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driven.App.BrandPeriodSalesReporting", "Driven.App.BrandPeriodSalesReporting\Driven.App.BrandPeriodSalesReporting.csproj", "{5BD054FE-23B0-4481-9CCF-BBCC28CC3941}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Royalty", "Royalty", "{6E20EB02-A320-4120-827B-21573A4C7EE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driven.Data.Royalty", "..\Royalty\Driven.Data.Royalty\Driven.Data.Royalty.csproj", "{187625EF-2D64-40CC-A500-677C982178D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driven.Data.Entity.Royalty", "..\Royalty\Driven.Data.Entity.Royalty\Driven.Data.Entity.Royalty.csproj", "{D1275513-8346-49E2-BE13-6DD3F151EBA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driven.Data.Repository.Royalty", "..\Royalty\Driven.Data.Repository.Royalty\Driven.Data.Repository.Royalty.csproj", "{839980A6-5E6F-4A82-BE9D-004E54B4C671}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driven.Business.Royalty", "..\Royalty\Driven.Business.Royalty\Driven.Business.Royalty.csproj", "{2AF71C98-1C5D-4AD3-941B-4C087445ECE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driven.Data.Entity.Security", "..\Security\Driven.Data.Entity.Security\Driven.Data.Entity.Security.csproj", "{9A79695A-5487-444E-90DB-1299218375F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driven.Business.Security", "..\Security\Driven.Business.Security\Driven.Business.Security.csproj", "{E12C5BC8-C7A4-4AB5-94DC-752E008A0F78}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{9233AE3B-BFFC-4A2F-A54B-BD6EE2B79B20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driven.Business.NotificationTemplates", "..\Notification\Driven.Business.NotificationTemplates\Driven.Business.NotificationTemplates.csproj", "{DF8292CF-CC35-4289-A37D-E9DFDCC63CFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Saml", "Saml", "{B0CA23F2-6A75-49F9-868C-166A6480BCBC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sustainsys.Saml2", "..\Saml\Sustainsys.Saml2\Sustainsys.Saml2.csproj", "{8AF01FDF-1458-481A-B527-43C59DA521F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sustainsys.Saml2.Mvc", "..\Saml\Sustainsys.Saml2.Mvc\Sustainsys.Saml2.Mvc.csproj", "{7D32F0A3-CEC8-4DC6-A096-5905EA9C3770}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BD054FE-23B0-4481-9CCF-BBCC28CC3941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BD054FE-23B0-4481-9CCF-BBCC28CC3941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BD054FE-23B0-4481-9CCF-BBCC28CC3941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BD054FE-23B0-4481-9CCF-BBCC28CC3941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{187625EF-2D64-40CC-A500-677C982178D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{187625EF-2D64-40CC-A500-677C982178D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{187625EF-2D64-40CC-A500-677C982178D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{187625EF-2D64-40CC-A500-677C982178D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1275513-8346-49E2-BE13-6DD3F151EBA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1275513-8346-49E2-BE13-6DD3F151EBA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1275513-8346-49E2-BE13-6DD3F151EBA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1275513-8346-49E2-BE13-6DD3F151EBA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{839980A6-5E6F-4A82-BE9D-004E54B4C671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{839980A6-5E6F-4A82-BE9D-004E54B4C671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{839980A6-5E6F-4A82-BE9D-004E54B4C671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{839980A6-5E6F-4A82-BE9D-004E54B4C671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AF71C98-1C5D-4AD3-941B-4C087445ECE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AF71C98-1C5D-4AD3-941B-4C087445ECE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AF71C98-1C5D-4AD3-941B-4C087445ECE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AF71C98-1C5D-4AD3-941B-4C087445ECE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A79695A-5487-444E-90DB-1299218375F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A79695A-5487-444E-90DB-1299218375F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A79695A-5487-444E-90DB-1299218375F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A79695A-5487-444E-90DB-1299218375F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E12C5BC8-C7A4-4AB5-94DC-752E008A0F78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E12C5BC8-C7A4-4AB5-94DC-752E008A0F78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E12C5BC8-C7A4-4AB5-94DC-752E008A0F78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E12C5BC8-C7A4-4AB5-94DC-752E008A0F78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF8292CF-CC35-4289-A37D-E9DFDCC63CFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF8292CF-CC35-4289-A37D-E9DFDCC63CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF8292CF-CC35-4289-A37D-E9DFDCC63CFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF8292CF-CC35-4289-A37D-E9DFDCC63CFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AF01FDF-1458-481A-B527-43C59DA521F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AF01FDF-1458-481A-B527-43C59DA521F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AF01FDF-1458-481A-B527-43C59DA521F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AF01FDF-1458-481A-B527-43C59DA521F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D32F0A3-CEC8-4DC6-A096-5905EA9C3770}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D32F0A3-CEC8-4DC6-A096-5905EA9C3770}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D32F0A3-CEC8-4DC6-A096-5905EA9C3770}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D32F0A3-CEC8-4DC6-A096-5905EA9C3770}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{187625EF-2D64-40CC-A500-677C982178D2} = {6E20EB02-A320-4120-827B-21573A4C7EE9}
+		{D1275513-8346-49E2-BE13-6DD3F151EBA2} = {6E20EB02-A320-4120-827B-21573A4C7EE9}
+		{839980A6-5E6F-4A82-BE9D-004E54B4C671} = {6E20EB02-A320-4120-827B-21573A4C7EE9}
+		{2AF71C98-1C5D-4AD3-941B-4C087445ECE2} = {6E20EB02-A320-4120-827B-21573A4C7EE9}
+		{9A79695A-5487-444E-90DB-1299218375F4} = {596CAA29-DD80-45D1-A06F-AE7155237282}
+		{E12C5BC8-C7A4-4AB5-94DC-752E008A0F78} = {596CAA29-DD80-45D1-A06F-AE7155237282}
+		{DF8292CF-CC35-4289-A37D-E9DFDCC63CFD} = {9233AE3B-BFFC-4A2F-A54B-BD6EE2B79B20}
+		{8AF01FDF-1458-481A-B527-43C59DA521F0} = {B0CA23F2-6A75-49F9-868C-166A6480BCBC}
+		{7D32F0A3-CEC8-4DC6-A096-5905EA9C3770} = {B0CA23F2-6A75-49F9-868C-166A6480BCBC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A94F0C9F-3417-40CE-89E2-B48951ACA4DD}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 11
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://drivenbrands.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Driven.App.BrandPeriodSalesReporting\\Driven.App.BrandPeriodSalesReporting.csproj
+		SccProjectName1 = Driven.App.BrandPeriodSalesReporting
+		SccLocalPath1 = Driven.App.BrandPeriodSalesReporting
+		SccProjectUniqueName2 = ..\\Royalty\\Driven.Data.Royalty\\Driven.Data.Royalty.csproj
+		SccProjectTopLevelParentUniqueName2 = BrandPeriodSalesReporting.sln
+		SccProjectName2 = ../Royalty/Driven.Data.Royalty
+		SccLocalPath2 = ..\\Royalty\\Driven.Data.Royalty
+		SccProjectUniqueName3 = ..\\Royalty\\Driven.Data.Entity.Royalty\\Driven.Data.Entity.Royalty.csproj
+		SccProjectTopLevelParentUniqueName3 = BrandPeriodSalesReporting.sln
+		SccProjectName3 = ../Royalty/Driven.Data.Entity.Royalty
+		SccLocalPath3 = ..\\Royalty\\Driven.Data.Entity.Royalty
+		SccProjectUniqueName4 = ..\\Royalty\\Driven.Data.Repository.Royalty\\Driven.Data.Repository.Royalty.csproj
+		SccProjectTopLevelParentUniqueName4 = BrandPeriodSalesReporting.sln
+		SccProjectName4 = ../Royalty/Driven.Data.Repository.Royalty
+		SccLocalPath4 = ..\\Royalty\\Driven.Data.Repository.Royalty
+		SccProjectUniqueName5 = ..\\Royalty\\Driven.Business.Royalty\\Driven.Business.Royalty.csproj
+		SccProjectTopLevelParentUniqueName5 = BrandPeriodSalesReporting.sln
+		SccProjectName5 = ../Royalty/Driven.Business.Royalty
+		SccLocalPath5 = ..\\Royalty\\Driven.Business.Royalty
+		SccProjectUniqueName6 = ..\\Security\\Driven.Data.Entity.Security\\Driven.Data.Entity.Security.csproj
+		SccProjectTopLevelParentUniqueName6 = BrandPeriodSalesReporting.sln
+		SccProjectName6 = ../Security/Driven.Data.Entity.Security
+		SccLocalPath6 = ..\\Security\\Driven.Data.Entity.Security
+		SccProjectUniqueName7 = ..\\Security\\Driven.Business.Security\\Driven.Business.Security.csproj
+		SccProjectTopLevelParentUniqueName7 = BrandPeriodSalesReporting.sln
+		SccProjectName7 = ../Security/Driven.Business.Security
+		SccLocalPath7 = ..\\Security\\Driven.Business.Security
+		SccProjectUniqueName8 = ..\\Notification\\Driven.Business.NotificationTemplates\\Driven.Business.NotificationTemplates.csproj
+		SccProjectTopLevelParentUniqueName8 = BrandPeriodSalesReporting.sln
+		SccProjectName8 = ../Notification/Driven.Business.NotificationTemplates
+		SccLocalPath8 = ..\\Notification\\Driven.Business.NotificationTemplates
+		SccProjectUniqueName9 = ..\\Saml\\Sustainsys.Saml2\\Sustainsys.Saml2.csproj
+		SccProjectTopLevelParentUniqueName9 = BrandPeriodSalesReporting.sln
+		SccProjectName9 = ../Saml/Sustainsys.Saml2
+		SccLocalPath9 = ..\\Saml\\Sustainsys.Saml2
+		SccProjectUniqueName10 = ..\\Saml\\Sustainsys.Saml2.Mvc\\Sustainsys.Saml2.Mvc.csproj
+		SccProjectTopLevelParentUniqueName10 = BrandPeriodSalesReporting.sln
+		SccProjectName10 = ../Saml/Sustainsys.Saml2.Mvc
+		SccLocalPath10 = ..\\Saml\\Sustainsys.Saml2.Mvc
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,146 @@
+﻿@using Driven.App.BrandPeriodSalesReporting.Helpers
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.6/dt-1.10.12/b-1.2.1/b-colvis-1.2.1/r-2.1.0/se-1.2.0/datatables.min.css" />
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.20/sorting/datetime-moment.js"></script>
+    <script type="text/javascript" src="https://cdn.ckeditor.com/4.5.11/standard-all/ckeditor.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+
+        $(document).ajaxError(function (event, jqxhr, settings, thrownError) {
+            if (jqxhr.status === 412) {
+                location.reload();
+            }
+        });
+
+        function switchSubBrand(formname, key, value) {
+            $("#" + key).val(value);
+            document.getElementById('SwitchSubBrandForm').submit();
+        }
+
+    </script>
+
+</head>
+<body>
+    @{
+        var RouteDataValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
+        var UserViewModel = SecurityHelpers.GetUserViewModel();
+
+        var AllowSubmitCorrections = false;
+        var AllowNotifications = false;
+        var AllowCorrectionDataEdits = false;
+        var AllowApproveCorrections = false;
+        var AllowReports = false;
+
+        if (UserViewModel != null)
+        {
+            AllowSubmitCorrections = true;
+            AllowNotifications = UserViewModel.IsAdmin;
+            AllowCorrectionDataEdits = UserViewModel.IsAdmin;
+            AllowApproveCorrections = (UserViewModel.IsAdmin || UserViewModel.IsApprover);
+            AllowReports = (UserViewModel.IsAdmin || UserViewModel.IsReportsAvailable);
+        }
+        
+        //var AllowSubmitCorrections = true;
+        //var AllowNotifications = UserViewModel.IsAdmin;
+        //var AllowCorrectionDataEdits = UserViewModel.IsAdmin;
+        //var AllowApproveCorrections = (UserViewModel.IsAdmin || UserViewModel.IsApprover);
+        //var AllowReports = (UserViewModel.IsAdmin || UserViewModel.IsReportsAvailable);
+        
+        var HasAdminMenu = (AllowNotifications || AllowSubmitCorrections || AllowApproveCorrections || AllowReports);
+    }
+
+    @Html.Partial("_Loading")
+    @Html.Hidden("RelativeUrl", Url.Content("~/"))
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="@Url.Content("~/Content/Images/FIRM_LOGO.png")" height="25">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <p class="navbar-text navbar-left" style="float: none; color: #F2BD3B;">@ViewBag.Title</p>
+                <ul class="nav navbar-nav navbar-left">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="@((RouteHelpers.IsRoute(RouteDataValues, "BrandPeriodSales")) ? "nav-item active" : "nav-item")">@Html.ActionLink("Invoice Reporting", "Index", "BrandPeriodSales")</li>
+                        
+                        if (HasAdminMenu)
+                        {
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration <span class="caret"></span></a>
+                                <ul class="navbar-inverse dropdown-menu navbar-nav">
+                                    @if (AllowNotifications)
+                                    {
+                                        <li class="@((RouteHelpers.IsRoute(RouteDataValues, "Notification")) ? "nav-item active" : "nav-item")" style="width:100%">@Html.ActionLink("Notifications", "Index", "Notification")</li>
+                                    }
+
+                                    @if (AllowSubmitCorrections)
+                                    {
+                                        <li class="@((RouteHelpers.IsRoute(RouteDataValues, "SalesCorrection", "SubmitCorrections")) ? "nav-item active" : "nav-item")" style="width:100%">@Html.ActionLink("Submit Sales Correction", "SubmitCorrections", "SalesCorrection")</li>
+                                    }
+                                    
+                                    @if (AllowApproveCorrections)
+                                    {
+                                        <li class="@((RouteHelpers.IsRoute(RouteDataValues, "SalesCorrection", "ApproveCorrections")) ? "nav-item active" : "nav-item")" style="width:100%">@Html.ActionLink("Approve Sales Correction", "ApproveCorrections", "SalesCorrection")</li>
+                                    }
+
+                                    @if (AllowCorrectionDataEdits)
+                                    {
+                                        <li class="@((RouteHelpers.IsRoute(RouteDataValues, "CorrectionType", "Index")) ? "nav-item active" : "nav-item")" style="width:100%">@Html.ActionLink("Correction Types", "Index", "CorrectionType")</li>
+                                        <li class="@((RouteHelpers.IsRoute(RouteDataValues, "DenialType", "Index")) ? "nav-item active" : "nav-item")" style="width:100%">@Html.ActionLink("Denial Types", "Index", "DenialType")</li>
+                                    }
+
+                                    @if (AllowReports)
+                                    {
+                                        <li class="nav-item"><a target="_blank" href="https://spotlight.drivenbrands.com/hub">Reports<span class="glyphicon glyphicon-new-window" style="margin-left: 5px;"></span></a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    }
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p class="pull-left">&copy; @DateTime.Now.Year - Driven Brands, Inc. | All Rights Reserved</p>
+            <img class="pull-right" src="@Url.Content("~/Content/Images/DRIVEN_TECH_LOGO_PNG.png")" alt="Driven Tech" height="25">
+        </footer>
+    </div>
+
+</body>
+</html>

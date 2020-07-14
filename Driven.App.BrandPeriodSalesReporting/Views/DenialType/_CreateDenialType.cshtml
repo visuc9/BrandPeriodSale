@@ -1,0 +1,48 @@
+﻿@using Driven.App.BrandPeriodSalesReporting.Models
+@using Driven.App.BrandPeriodSalesReporting.Helpers
+
+@model CreateDenialTypeViewModel
+
+<div class="modal-content">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add Denial Type</h4>
+    </div>
+
+    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST" }))
+    {
+
+        <div class="modal-body">
+            @Html.AntiForgeryToken()
+            @Html.Hidden("DialogResult", (string)Convert.ToString(ViewBag.DialogResult ?? string.Empty))
+            @Html.Partial("_ValidationSummary")
+
+            <fieldset class="form-group">
+                @Html.LabelFor(m => m.DenialTypeId)
+                @Html.TextBoxFor(m => m.DenialTypeId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.DenialTypeId)
+            </fieldset>
+
+            <fieldset class="form-group">
+                @Html.LabelFor(m => m.DenialTypeCodeId)
+                @Html.TextBoxFor(m => m.DenialTypeCodeId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.DenialTypeCodeId)
+            </fieldset>
+
+            <fieldset class="form-group">
+                @Html.LabelFor(m => m.DenialTypeDescription)
+                @Html.TextBoxFor(m => m.DenialTypeDescription, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.DenialTypeDescription)
+            </fieldset>
+        </div>
+
+        <div class="modal-footer">
+            <button id="SaveBtn" class="btn btn-primary" name="submit" type="submit">Save</button>
+            <button type="button" class="btn btn-inverse" data-dismiss="modal">Cancel</button>
+        </div>
+
+    }
+
+</div>
+

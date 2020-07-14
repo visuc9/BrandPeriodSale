@@ -1,0 +1,160 @@
+﻿@using Driven.App.BrandPeriodSalesReporting.Models
+@using Driven.App.BrandPeriodSalesReporting.Helpers
+
+@model AboutViewModel
+
+@{
+    ViewBag.Title = "Franchise Invoice Reporting Module";
+}
+
+@*<div class="jumbotron">
+    <h1>Brand Period Sales Reporting</h1>
+    <p class="lead">Prosciutto landjaeger turducken flank. Leberkas turducken doner tri-tip kielbasa tail bacon sausage beef meatball.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Capicola cow meatball </h2>
+        <p>Doner pork loin chicken spare ribs, alcatra salami turkey andouille pig cupim biltong ham hock pork. Biltong capicola turducken, venison chicken shank andouille pig corned beef filet mignon hamburger cow porchetta shankle.</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Drumstick prosciutto bresaola</h2>
+        <p>Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Meatball capicola corned</h2>
+        <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.</p>
+    </div>
+</div>*@
+
+<div>
+    <h2>About Properties</h2>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">App Properties</div>
+    <div class="panel-body">
+        <div>
+            <span class="label label-success">Version</span>
+            <span>@Model.Version</span>
+        </div>
+        <div>
+            <span class="label label-success">Configuration</span>
+            <span>@Model.Configuration</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Auth Properties</div>
+    <div class="panel-body">
+        <div>
+            <span class="label label-success">AuthFake</span>
+            <span>@Model.AuthFake</span>
+        </div>
+        <div>
+            <span class="label label-success">AuthFakeGroups</span>
+            <span>@Model.AuthFakeGroups</span>
+        </div>
+        <div>
+            <span class="label label-success">AuthDomainName</span>
+            <span>@Model.AuthDomainName</span>
+        </div>
+        <div>
+            <span class="label label-success">AuthExpireTimeSpan</span>
+            <span>@Model.AuthExpireTimeSpan</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Email Properties</div>
+    <div class="panel-body">
+        <div>
+            <span class="label label-success">EmailDebug</span>
+            <span>@Model.EmailDebug</span>
+        </div>
+        <div>
+            <span class="label label-success">EmailEnabled</span>
+            <span>@Model.EmailEnabled</span>
+        </div>
+        <div>
+            <span class="label label-success">EmailFrom</span>
+            <span>@Model.EmailFrom</span>
+        </div>
+        <div>
+            <span class="label label-success">EmailForceTo</span>
+            <span>@Model.EmailForceTo</span>
+        </div>
+        <div>
+            <span class="label label-success">EmailSmtpHost</span>
+            <span>@Model.EmailSmtpHost</span>
+        </div>
+        <div>
+            <span class="label label-success">EmailSmtpUser</span>
+            <span>@Model.EmailSmtpUser</span>
+        </div>
+        <div>
+            <span class="label label-success">EmailSmtpPass</span>
+            <span>@Model.EmailSmtpPass</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">User Properties</div>
+    <div class="panel-body">
+        <div>
+            <span class="label label-success">UserName</span>
+            <span>@Model.UserName</span>
+        </div>
+        <div>
+            <span class="label label-success">UserDisplayName</span>
+            <span>@Model.UserDisplayName</span>
+        </div>
+        <div>
+            <span class="label label-success">UserEmailAddress</span>
+            <span>@Model.UserEmailAddress</span>
+        </div>
+        <div>
+            <span class="label label-success">UserGroups</span>
+            <span>@Model.UserGroups</span>
+        </div>
+        <div>
+            <span class="label label-success">UserIsAdmin</span>
+            <span>@Model.UserIsAdmin</span>
+        </div>
+        <div>
+            <span class="label label-success">UserIsApprover</span>
+            <span>@Model.UserIsApprover</span>
+        </div>
+        <div>
+            <span class="label label-success">UserIsReportsAvailable</span>
+            <span>@Model.UserIsReportsAvailable</span>
+        </div>
+        <div>
+            <span class="label label-success">UserCurrentSubBrandId</span>
+            <span>@Model.UserCurrentSubBrandId</span>
+        </div>
+        <div>
+            <span class="label label-success">UserCurrentSubBrandName</span>
+            <span>@Model.UserCurrentSubBrandName</span>
+        </div>
+        <div>
+            <span class="label label-success">UserAvailableSubBrands</span>
+            <span>@Model.UserAvailableSubBrands</span>
+        </div>
+        <div>
+            <span class="label label-success">UserApproverGroups</span>
+            <span>@Model.UserApproverGroups</span>
+        </div>
+        <div>
+            <span class="label label-success">UserApproverMembers (emails)</span>
+            <span>@Model.UserApproverMembers</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+﻿<div id="loadingAlert" class="alert alert-warning" role="alert" style="padding: 10px; top:0px; text-align:center; margin-left:45%; display:none; position: fixed; z-index: 2000;">
+    <span class="glyphicon glyphicon-time"></span>
+    <span>Loading...</span>
+</div>
+<script type="text/javascript">
+
+        function setLoading(s) {
+            if (s == true) {
+                $("#loadingAlert").show();
+            } else {
+                $("#loadingAlert").hide();
+            }
+        }
+
+</script>

@@ -1,0 +1,99 @@
+﻿@using Driven.App.BrandPeriodSalesReporting.Models
+@using Driven.App.BrandPeriodSalesReporting.Helpers
+
+@model ToplineListViewModel
+
+@{
+    ViewBag.Title = "Franchise Invoice Reporting Module";
+}
+
+<style>
+    .form-inline {
+        padding-top: 20px;
+        padding-bottom: 10px !important;
+    }
+</style>
+
+@Html.Partial("_AntiForgeryPartial", "__AjaxAntiForgeryForm")
+@Html.HiddenFor(m => m.IsAdmin)
+@Html.HiddenFor(m => m.IsApprover)
+
+<div>
+
+    <div id="brandPeriodSalesTableSpinner" style="clear: both; float: left; position: relative">
+        <br />
+        <img src="@Url.Content("~/Content/Images/dots.gif")">
+    </div>
+
+    <div id="brandPeriodSalesTableContainer" style="display:none">
+
+        <div class="form-inline pull-left">
+            <div class="form-group" style="padding-right:15px">
+                @Html.LabelFor(m => m.StoreId)
+                @Html.DropDownListFor(m => m.StoreId, Model.StoreIds, "All", new { @class = "form-control" })
+            </div>
+
+            <div class="form-group" style="padding-right:15px">
+                @Html.LabelFor(m => m.PeriodEndDate)
+                @Html.DropDownListFor(m => m.PeriodEndDate, Model.PeriodEndDates, "All", new { @class = "form-control" })
+            </div>
+
+            <div class="form-group" style="padding-right:15px">
+                @Html.LabelFor(m => m.StatusId)
+                @Html.DropDownListFor(m => m.StatusId, Model.StatusIds, "All", new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.CheckBoxFor(m => m.IsPastDue)
+                @Html.LabelFor(m => m.IsPastDue)
+            </div>
+        </div>
+
+        <div class="form-inline pull-right">
+            @if (Model.IsAdmin || (Model.IsApprover))
+            {
+                <button id="SubmitBtn" type="button" role="button" class="btn btn-primary" disabled="disabled">Approve Checked</button>
+            }
+        </div>
+
+        <table id="brandPeriodSalesTable" style="width:100%" class="table table-striped table-bordered table-condensed table-hover">
+            <thead class="bg-info">
+                <tr>
+                    <th width="4%" style="text-align: center; padding: 0px;"><input id="selectAll" type="checkbox" value="" disabled title="Select all For Approval"></th>
+                    <th></th>
+                    <th></th>
+                    <th width="12%" style="text-align: center">Store #</th>
+                    <th width="12%" style="text-align: center">Reporting Period</th>
+                    <th width="12%" style="text-align: center">Status</th>
+                    <th width="12%" style="text-align: center">Sales</th>
+                    <th width="12%" style="text-align: center">Tickets</th>
+                    <th width="12%" style="text-align: center">Franchise Fees</th>
+                    <th width="12%" style="text-align: center">Advertising Fees</th>
+                    <th width="12%" style="text-align: center">Action</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tfoot class="bg-warning">
+                <tr>
+                    <th colspan="11" align="left"></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>
+
+<div class="modal fade" id="EditToplineModal" data-backdrop="static" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div id="EditToplinePartialView"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/drivenappbrandperiodsalesreporting")
+    @Scripts.Render("~/bundles/drivenappbrandperiodsalesreportingbrandperiodsales")
+}

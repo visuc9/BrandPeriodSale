@@ -1,0 +1,113 @@
+﻿@using Driven.App.BrandPeriodSalesReporting.Models
+@using Driven.App.BrandPeriodSalesReporting.Helpers
+
+@model EditToplineViewModel
+
+<div class="modal-content">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 id="ToplineModalTitle" class="modal-title">Enter Sales</h4>
+    </div>
+
+    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST" }))
+    {
+
+        <div class="modal-body">
+            @Html.AntiForgeryToken()
+            @Html.Hidden("DialogResult", (string)Convert.ToString(ViewBag.DialogResult ?? string.Empty))
+            @Html.Partial("_ValidationSummary")
+
+            <table class="table table-condensed" style="table-layout: fixed; margin-bottom: 0px">
+                <thead>
+                    <tr>
+                        <th>@Html.LabelFor(m => m.ProductGroups)</th>
+                        <th>@Html.LabelFor(m => m.NetSales)</th>
+                        <th>@Html.LabelFor(m => m.TotalTickets)</th>
+                        <th>@Html.LabelFor(m => m.FranCalcRoyalty)</th>
+                        <th>@Html.LabelFor(m => m.FranCalcAdvertising)</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="div-table-content" style="height: 230px; overflow-y: auto;">
+                <table class="table table-condensed" style="table-layout: fixed">
+                    <tbody>
+                        @for (int i = 0; i < Model.ProductGroups.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.HiddenFor(m => m.ProductGroups[i].ProdGrpID)
+                                    @Html.HiddenFor(m => m.ProductGroups[i].ProdSubGrpID)
+                                    @Html.HiddenFor(m => m.ProductGroups[i].BPSR_ProdGrpID)
+                                    @Model.ProductGroups[i].Name
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.ProductGroups[i].NetSales, new { @class = "form-control netsales" })
+                                    @Html.ValidationMessageFor(m => m.ProductGroups[i].NetSales)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.ProductGroups[i].TotalTickets, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.ProductGroups[i].TotalTickets)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.ProductGroups[i].FranCalcRoyalty, new { @class = "form-control francalcroyalty" })
+                                    @Html.ValidationMessageFor(m => m.ProductGroups[i].FranCalcRoyalty)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.ProductGroups[i].FranCalcAdvertising, new { @class = "form-control francalcadvertising" })
+                                    @Html.ValidationMessageFor(m => m.ProductGroups[i].FranCalcAdvertising)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <table class="table table-condensed" style="table-layout: fixed">
+                <tfoot>
+                    <tr>
+                        <td>Store Total</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.NetSales, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.NetSales)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.TotalTickets, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.TotalTickets)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.FranCalcRoyalty, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.FranCalcRoyalty)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.FranCalcAdvertising, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.FranCalcAdvertising)
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>    
+            @*<fieldset class="form-group pull-left">
+                @Html.LabelFor(m => m.SalesTypeId)
+                @Html.DropDownListFor(m => m.SalesTypeId, Model.SalesTypeList, (object)new { @class = "form-control" })
+
+            </fieldset>*@
+
+        </div>
+
+        <div class="modal-footer">
+            @Html.HiddenFor(m => m.IsApprove)
+            @Html.HiddenFor(m => m.ToplineId)
+            @Html.HiddenFor(m => m.Title)
+            @Html.HiddenFor(m => m.SalesTypeId)
+            @if (Model.CanApprove)
+            {
+                <button id="SaveAndApproveBtn" type="button" class="btn btn-primary">Save &amp; Submit for Approval</button>
+            }
+
+
+            <button id="SaveBtn" class="btn btn-primary" name="submit" type="button">Save</button>
+            <button type="button" class="btn btn-inverse" data-dismiss="modal">Cancel</button>
+        </div>
+
+    }
+
+</div>

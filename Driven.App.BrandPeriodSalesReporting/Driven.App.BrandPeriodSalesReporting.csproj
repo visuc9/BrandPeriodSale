@@ -1,0 +1,786 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5BD054FE-23B0-4481-9CCF-BBCC28CC3941}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Driven.App.BrandPeriodSalesReporting</RootNamespace>
+    <AssemblyName>Driven.App.BrandPeriodSalesReporting</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.4.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="IdentityModel, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e7877f4675df049f, processorArchitecture=MSIL">
+      <HintPath>..\packages\IdentityModel.4.1.1\lib\net461\IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.6.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.6.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.5.6.0\lib\net461\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.5.6.0\lib\net461\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.6.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Jwt, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Jwt.4.1.0\lib\net45\Microsoft.Owin.Security.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OpenIdConnect, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OpenIdConnect.4.1.0\lib\net45\Microsoft.Owin.Security.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.13.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.13.1\lib\net45\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.3.1.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.3.1\lib\net45\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common.WebHost, Version=3.3.1.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.WebHost.3.3.1\lib\net45\Ninject.Web.Common.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.3.0\lib\net45\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Okta.AspNet, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Okta.AspNet.1.4.0\lib\net452\Okta.AspNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Okta.AspNet.Abstractions, Version=3.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Okta.AspNet.Abstractions.3.0.3\lib\net452\Okta.AspNet.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.6.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.7.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\Log4NetConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BrandPeriodSalesController.cs" />
+    <Compile Include="Controllers\CorrectionTypeController.cs" />
+    <Compile Include="Controllers\DenialTypeController.cs" />
+    <Compile Include="Controllers\FranchiseUserSalesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\SalesCorrectionController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ConvertHelpers.cs" />
+    <Compile Include="Helpers\DataTableHelpers.cs" />
+    <Compile Include="Helpers\FormatHelpers.cs" />
+    <Compile Include="Helpers\PlaceholderHelpers.cs" />
+    <Compile Include="Helpers\RouteHelpers.cs" />
+    <Compile Include="Helpers\SecurityHelpers.cs" />
+    <Compile Include="Models\AjaxAuthorizeAttribute.cs" />
+    <Compile Include="Models\BpsrAuthorizeAttribute.cs" />
+    <Compile Include="Models\CorrectionTypeViewModels.cs" />
+    <Compile Include="Models\DataTableModels.cs" />
+    <Compile Include="Models\DenialTypeViewModels.cs" />
+    <Compile Include="Models\EmailAddressExAttribute.cs" />
+    <Compile Include="Models\FranCalcAdvertisingValidation.cs" />
+    <Compile Include="Models\FranCalcRoyaltyValidation.cs" />
+    <Compile Include="Models\NetSalesValidation.cs" />
+    <Compile Include="Models\BrandPeriodSalesViewModels.cs" />
+    <Compile Include="Models\LoginViewModels.cs" />
+    <Compile Include="Models\NotificationViewModels.cs" />
+    <Compile Include="Models\PlaceholderModels.cs" />
+    <Compile Include="Models\SalesCorrectionModels.cs" />
+    <Compile Include="Models\UserViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\dots.gif" />
+    <Content Include="Content\Images\Driven_Logo.png" />
+    <Content Include="Content\Images\DRIVEN_TECH_LOGO_PNG.png" />
+    <Content Include="Content\Images\FIRM_LOGO.png" />
+    <Content Include="Content\Images\logo-1800radiator.png" />
+    <Content Include="Content\Images\logo-carstar.png" />
+    <Content Include="Content\Images\logo-driven-florida-lubes.png" />
+    <Content Include="Content\Images\logo-drivenstyle.png" />
+    <Content Include="Content\Images\logo-econolube.png" />
+    <Content Include="Content\Images\logo-maaco.png" />
+    <Content Include="Content\Images\logo-meineke.png" />
+    <Content Include="Content\Images\logo-merlin.png" />
+    <Content Include="Content\Images\logo-prooilchange.png" />
+    <Content Include="Content\Images\logo-take5oil.png" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\correctiontype\correctiontypes.js" />
+    <Content Include="Scripts\app\correctiontype\createcorrectiontype.js" />
+    <Content Include="Scripts\app\correctiontype\editcorrectiontype.js" />
+    <Content Include="Scripts\app\denialtype\createdenialtype.js" />
+    <Content Include="Scripts\app\denialtype\denialtypes.js" />
+    <Content Include="Scripts\app\denialtype\editdenialtype.js" />
+    <Content Include="Scripts\app\home\index.js" />
+    <Content Include="Scripts\app\brandperiodsales\toplines.js" />
+    <Content Include="Scripts\app\notification\editbrandnotification.js" />
+    <Content Include="Scripts\app\notification\editlevelnotification.js" />
+    <Content Include="Scripts\app\notification\notifications.js" />
+    <Content Include="Scripts\app\salescorrection\approvecorrections.js" />
+    <Content Include="Scripts\app\salescorrection\approvetoplinecorrection.js" />
+    <Content Include="Scripts\app\salescorrection\createtoplinecorrection.js" />
+    <Content Include="Scripts\app\salescorrection\edittoplinecorrection.js" />
+    <Content Include="Scripts\app\salescorrection\submitcorrections.js" />
+    <Content Include="Scripts\bootbox\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap-datatables-1.10.5\dataTables.bootstrap.css" />
+    <Content Include="Scripts\bootstrap-datatables-1.10.5\dataTables.bootstrap.js" />
+    <Content Include="Scripts\bootstrap-datatables-1.10.5\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap-datatables-1.10.5\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\bootstrap-datatables-1.10.5\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\bootstrap-datatables-1.10.5\jquery.dataTables.js" />
+    <Content Include="Scripts\bootstrap-datatables-1.10.5\jquery.dataTables.min.js" />
+    <Content Include="Scripts\bootstrap-datetime\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap-growl\jquery.bootstrap-growl.js" />
+    <Content Include="Scripts\bootstrap-growl\jquery.bootstrap-growl.min.js" />
+    <Content Include="Scripts\bootstrap-tags\css\bootstrap-tags.css" />
+    <Content Include="Scripts\bootstrap-tags\js\bootstrap-tags.js" />
+    <Content Include="Scripts\bootstrap-tags\js\bootstrap-tags.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\app\common.js" />
+    <Content Include="Scripts\app\brandperiodsales\edittopline.js" />
+    <Content Include="Content\bootstrap-datetimepicker-build.less" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="App_Data\okta.cert" />
+    <None Include="NWebsecConfig\HttpHeaderSecurityModuleConfig.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\BPSR - Dev %2810.50.1.30%29.pubxml" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\readme.md" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\donothing\plugin.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\af.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\ar.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\bg.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\bn.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\bs.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\ca.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\cs.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\cy.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\da.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\de-ch.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\de.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\el.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\en-au.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\en-ca.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\en-gb.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\en.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\eo.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\es.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\et.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\eu.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\fa.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\fi.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\fo.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\fr-ca.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\fr.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\gl.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\gu.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\he.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\hi.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\hr.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\hu.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\is.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\it.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\ja.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\ka.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\km.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\ko.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\ku.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\lt.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\lv.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\mk.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\mn.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\ms.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\nb.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\nl.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\no.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\pl.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\pt-br.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\pt.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\ro.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\ru.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\si.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\sk.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\sl.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\sq.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\sr-latn.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\sr.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\sv.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\th.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\tr.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\tt.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\ug.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\uk.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\vi.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\zh-cn.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\lang\zh.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\elementspath_custom\plugin.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\dev\placeholder.html" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\dialogs\placeholder.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\icons\hidpi\placeholder.png" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\icons\placeholder.png" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\af.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\ar.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\bg.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\ca.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\cs.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\cy.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\da.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\de-ch.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\de.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\el.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\en-gb.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\en.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\eo.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\es.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\et.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\eu.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\fa.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\fi.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\fr-ca.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\fr.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\gl.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\he.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\hr.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\hu.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\id.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\it.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\ja.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\km.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\ko.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\ku.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\lv.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\nb.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\nl.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\no.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\pl.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\pt-br.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\pt.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\ru.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\si.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\sk.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\sl.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\sq.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\sv.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\th.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\tr.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\tt.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\ug.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\uk.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\vi.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\zh-cn.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\lang\zh.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder\plugin.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\placeholder_select\plugin.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_plugins\richcombo\plugin.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_settings\config_multiline.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_settings\config_multilinenohtml.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_settings\config_singleline.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_settings\config_singlelinenone.js" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\dialog.css" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\dialog_ie.css" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\dialog_ie7.css" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\dialog_ie8.css" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\dialog_iequirks.css" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\dialog_opera.css" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\editor.css" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\editor_gecko.css" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\editor_ie.css" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\editor_ie7.css" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\editor_ie8.css" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\editor_iequirks.css" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\icons.png" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\icons_hidpi.png" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\images\arrow.png" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\images\close.png" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\images\hidpi\close.png" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\images\hidpi\lock-open.png" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\images\hidpi\lock.png" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\images\hidpi\refresh.png" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\images\lock-open.png" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\images\lock.png" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\images\refresh.png" />
+    <Content Include="Scripts\ckeditor-4.5.11\local_skins\bootstrapck\skin.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment-2.9.0\moment-with-locales.js" />
+    <Content Include="Scripts\moment-2.9.0\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment-2.9.0\moment.js" />
+    <Content Include="Scripts\moment-2.9.0\moment.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\select2-4.0.1\css\select2-bootstrap.css" />
+    <Content Include="Scripts\select2-4.0.1\css\select2.min.css" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\ar.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\az.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\bg.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\ca.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\cs.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\da.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\de.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\en.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\es.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\et.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\eu.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\fa.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\fi.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\fr.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\gl.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\he.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\hi.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\hr.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\hu.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\id.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\is.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\it.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\ja.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\ko.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\lt.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\lv.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\mk.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\ms.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\nb.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\nl.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\pl.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\pt-BR.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\pt.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\ro.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\ru.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\sk.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\sr-Cyrl.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\sr.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\sv.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\th.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\tr.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\uk.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\vi.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\zh-CN.js" />
+    <Content Include="Scripts\select2-4.0.1\js\i18n\zh-TW.js" />
+    <Content Include="Scripts\select2-4.0.1\js\select2.full.js" />
+    <Content Include="Scripts\select2-4.0.1\js\select2.full.min.js" />
+    <Content Include="Scripts\select2-4.0.1\js\select2.js" />
+    <Content Include="Scripts\select2-4.0.1\js\select2.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_Loading.cshtml" />
+    <Content Include="Views\Shared\_ValidationSummary.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\BrandPeriodSales\Index.cshtml" />
+    <Content Include="Views\Shared\_AntiForgeryPartial.cshtml" />
+    <Content Include="Views\BrandPeriodSales\_EditTopline.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\Notification\_EditLevelNotification.cshtml" />
+    <Content Include="Views\Notification\_EditBrandNotification.cshtml" />
+    <Content Include="Views\SalesCorrection\SubmitCorrections.cshtml" />
+    <Content Include="Views\SalesCorrection\_EditToplineCorrection.cshtml" />
+    <Content Include="Views\SalesCorrection\_CreateToplineCorrection.cshtml" />
+    <Content Include="Views\SalesCorrection\ApproveCorrections.cshtml" />
+    <Content Include="Views\SalesCorrection\_ApproveToplineCorrection.cshtml" />
+    <Content Include="Views\CorrectionType\Index.cshtml" />
+    <Content Include="Views\CorrectionType\_CreateCorrectionType.cshtml" />
+    <Content Include="Views\CorrectionType\_EditCorrectionType.cshtml" />
+    <Content Include="Views\DenialType\Index.cshtml" />
+    <Content Include="Views\DenialType\_CreateDenialType.cshtml" />
+    <Content Include="Views\DenialType\_EditDenialType.cshtml" />
+    <Content Include="Views\Shared\EmailTemplate.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\ErrorAntiforgery.cshtml" />
+    <Content Include="Views\Home\ErrorNotFound.cshtml" />
+    <Content Include="Views\FranchiseUserSales\Index.cshtml" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="fonts\" />
+    <Folder Include="Views\Account\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Notification\Driven.Business.NotificationTemplates\Driven.Business.NotificationTemplates.csproj">
+      <Project>{df8292cf-cc35-4289-a37d-e9dfdcc63cfd}</Project>
+      <Name>Driven.Business.NotificationTemplates</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Royalty\Driven.Business.Royalty\Driven.Business.Royalty.csproj">
+      <Project>{2af71c98-1c5d-4ad3-941b-4c087445ece2}</Project>
+      <Name>Driven.Business.Royalty</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Royalty\Driven.Data.Entity.Royalty\Driven.Data.Entity.Royalty.csproj">
+      <Project>{d1275513-8346-49e2-be13-6dd3f151eba2}</Project>
+      <Name>Driven.Data.Entity.Royalty</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Saml\Sustainsys.Saml2.Mvc\Sustainsys.Saml2.Mvc.csproj">
+      <Project>{7d32f0a3-cec8-4dc6-a096-5905ea9c3770}</Project>
+      <Name>Sustainsys.Saml2.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Security\Driven.Business.Security\Driven.Business.Security.csproj">
+      <Project>{e12c5bc8-c7a4-4ab5-94dc-752e008a0f78}</Project>
+      <Name>Driven.Business.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Security\Driven.Data.Entity.Security\Driven.Data.Entity.Security.csproj">
+      <Project>{9a79695a-5487-444e-90db-1299218375f4}</Project>
+      <Name>Driven.Data.Entity.Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57588</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51001/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

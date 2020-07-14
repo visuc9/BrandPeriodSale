@@ -1,0 +1,158 @@
+﻿@using Driven.App.BrandPeriodSalesReporting.Models
+@using Driven.App.BrandPeriodSalesReporting.Helpers
+
+@model NotificationListViewModel
+@{
+    ViewBag.Title = "Franchise Invoice Reporting Module";
+
+    var UserViewModel = SecurityHelpers.GetUserViewModel();
+    var CurrentSubBrandId = (UserViewModel != null) ? UserViewModel.SubBrandId : null;
+    var AvailableSubBrands = (UserViewModel != null) ? UserViewModel.AvailableSubBrands : null;
+    var CurrentSubBrandName = (CurrentSubBrandId != null && AvailableSubBrands.ContainsKey((int)CurrentSubBrandId)) ? AvailableSubBrands[(int)CurrentSubBrandId] : null;
+}
+
+<style>
+    .form-inline {
+        padding-top: 20px;
+    }
+
+    .cke_path_empty_custom {
+        display: none;
+    }
+
+    .cke_combo_text, .cke_combopanel {
+        width: auto !important;
+    }
+</style>
+
+
+@Html.Partial("_AntiForgeryPartial", "__AjaxAntiForgeryForm")
+@Html.HiddenFor(m => m.CanEdit)
+@Html.HiddenFor(m => m.SubBrandId)
+
+<div>
+
+    <div id="NotificationTableSpinner">
+        <br />
+        <img src="@Url.Content("~/Content/Images/dots.gif")">
+    </div>
+
+    <div id="NotificationTableContainer" style="display:none">
+
+        <div class="form-group form-inline">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="label label-success" style="display: inline-block; padding-top: 6px; font-size: 18px;">@CurrentSubBrandName</span>
+                </div>
+                <div class="panel-body">
+
+                    <div class="pull-left">
+
+                        <div class="checkbox pull-left" style="padding-left:20px;padding-top:5px;">
+                            <label><input id="chkEmailCheckboxBySubBrand" type="checkbox" checked="@Model.isEmailEnabled"><b>&nbsp;Email Enabled</b></label>
+                        </div>
+
+                        <div class='pull-left' style="padding-left:30px">
+                            @Html.HiddenFor(m => m.EmailSendTime)
+                            <div class='input-group date' id='datetimepicker_Email' style="width:150px;">
+                                @if (Model.isEmailEnabled)
+                                {
+                                    <input type='text' class="form-control" value="@Model.EmailSendTime" />
+                                }
+                                else
+                                {
+                                    <input type='text' class="form-control" value="" readonly />
+                                }
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pull-right">
+
+                        <div class="checkbox pull-left" style="padding-top:5px;">
+                            <label><input id="chkCallCheckboxBySubBrand" type="checkbox" checked="@Model.isCallEnabled"><b>&nbsp;Call Enabled</b></label>
+                        </div>
+
+                        <div class='pull-left' style="padding-left:30px;padding-right:20px;">
+                            <div class="form-group">
+                                @Html.HiddenFor(m => m.CallSendTime)
+                                <div class='input-group date' id='datetimepicker_Call' style="width:150px;">
+                                    @if (Model.isCallEnabled)
+                                    {
+                                        <input type='text' class="form-control" value="@Model.CallSendTime" />
+                                    }
+                                    else
+                                    {
+                                        <input type='text' class="form-control" value="" readonly />
+                                    }
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-time"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container text-center" style="clear:both;padding-top:20px;">
+                        <button id="EditBrandNotificationBtn" type="button" class="btn btn-primary" style="margin-right: 70px;" data-toggle="modal">Brand Setup</button>
+                        <button id="EditLevel1NotificationBtn" data-button="1" type="button" class="btn btn-primary" style="margin-right: 70px;" data-toggle="modal">Level 1 Setup</button>
+                        <button id="EditLevel2NotificationBtn" data-button="2" type="button" class="btn btn-primary" style="margin-right: 70px;" data-toggle="modal">Level 2 Setup</button>
+                        <button id="EditLevel3NotificationBtn" data-button="3" type="button" class="btn btn-primary" style="margin-right: 70px;" data-toggle="modal">Level 3 Setup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="form-inline pull-left" style="margin-top: -20px">
+            <div class="form-group">
+                @Html.LabelFor(m => m.LocalStoreIdSearchtxt)
+                @Html.TextBoxFor(m => m.LocalStoreIdSearchtxt, new { @class = "form-control", @style = "width:155px" })
+                @Html.LabelFor(m => m.CenterStatusId, new { @style = "padding-left:10px" })
+                @Html.DropDownListFor(m => m.CenterStatusId, Model.StoreStatusList, new { @class = "form-control" })
+            </div>
+        </div>
+
+        
+
+        <table id="NotificationTable" style="width:100%" class="table table-striped table-bordered table-condensed table-hover">
+            <thead class="bg-info">
+                <tr>
+                    <th></th>
+                    <th width="10%" style="text-align: center">Shop ID</th>
+                    <th width="10%" style="text-align: center">Location Store ID </th>
+                    <th width="45%" style="text-align: center">Store Status</th>
+                    <th width="10%" style="text-align: center">Exclude Email</th>
+                    <th width="10%" style="text-align: center">Exclude Call</th>
+                    <th width="15%" style="text-align: center">Time Zone</th>
+                </tr>
+            </thead>
+        </table>
+
+
+
+
+
+
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="EditNotificationModal" data-backdrop="static" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div id="EditNotificationPartialView"></div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/drivenappbrandperiodsalesreporting")
+    @Scripts.Render("~/bundles/drivenappbrandperiodsalesreportingnotification")
+}

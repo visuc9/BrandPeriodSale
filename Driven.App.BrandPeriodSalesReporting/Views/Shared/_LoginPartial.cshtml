@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNet.Identity
+@using Driven.App.BrandPeriodSalesReporting.Models
+@using Driven.App.BrandPeriodSalesReporting.Helpers
+@using System.Security.Claims
+
+@{
+    var UserViewModel = SecurityHelpers.GetUserViewModel();
+
+    var CurrentSubBrandId = (UserViewModel != null) ? UserViewModel.SubBrandId : null;
+    var AvailableSubBrands = (UserViewModel != null) ? UserViewModel.AvailableSubBrands : null;
+    var CurrentSubBrandName = (CurrentSubBrandId != null && AvailableSubBrands.ContainsKey((int)CurrentSubBrandId)) ? AvailableSubBrands[(int)CurrentSubBrandId] : null;
+    var UserIdentity = (ClaimsIdentity)User.Identity;
+    string userName = string.Empty;
+    if(UserIdentity != null && UserIdentity.Claims != null)
+    {
+        var nameClaim = UserIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+        if(nameClaim != null)
+        {
+            string[] strName = nameClaim.Value.Split(new Char[] { '@' });
+            userName = strName[0];
+        }
+    }   
+}
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("SwitchSubBrand", "Login", FormMethod.Post, new { id = "SwitchSubBrandForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("SubBrandId")
+
+        <ul class="nav navbar-nav navbar-right">
+
+            @if (AvailableSubBrands != null && CurrentSubBrandName != null)
+            {
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello @userName! [@CurrentSubBrandName] <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        @foreach (var subBrand in AvailableSubBrands)
+                        {
+                            <li><a href="javascript:switchSubBrand('SwitchSubBrandForm', 'SubBrandId', '@subBrand.Key')">@subBrand.Value</a></li>
+                        }
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Home")</li>
+            }
+
+            <li><a href="javascript:switchSubBrand('SwitchSubBrandForm', 'SubBrandId')">Log off</a></li>
+
+        </ul>
+
+    }
+}
+
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Index", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

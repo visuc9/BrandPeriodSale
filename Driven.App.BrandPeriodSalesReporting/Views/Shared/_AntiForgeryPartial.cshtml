@@ -1,0 +1,12 @@
+﻿@using Driven.App.BrandPeriodSalesReporting.Helpers
+
+@model string
+
+@{
+    var id = Model ?? "__AjaxAntiForgeryForm";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = @id }))
+{
+    @Html.AntiForgeryToken()
+}

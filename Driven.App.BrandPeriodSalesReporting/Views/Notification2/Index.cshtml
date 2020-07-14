@@ -1,0 +1,88 @@
+﻿@using Driven.App.BrandPeriodSalesReporting.Models
+@using Driven.App.BrandPeriodSalesReporting.Helpers
+
+@model ListNotification2ViewModel
+
+@{
+    ViewBag.Title = "Franchise Invoice Reporting Module";
+}
+
+
+<style>
+    .cke_path_empty_custom {
+        display: none;
+    }
+
+    .cke_combo_text, .cke_combopanel {
+        width: auto !important;
+    }
+</style>
+
+
+@Html.Partial("_AntiForgeryPartial", "__AjaxAntiForgeryForm")
+@Html.HiddenFor(m => m.SubBrandId)
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading">@Model.SubBrandName</div>
+    <div class="panel-body">
+        <div class="form-inline pull-left">
+            <div class="form-group" style="padding-right:25px">
+                @Html.CheckBoxFor(m => m.EmailEnabled)
+                @Html.LabelFor(m => m.EmailTime)
+                @Html.DropDownListFor(m => m.EmailTime, Model.AvailableEmailTimes, "Select", new { @class = "form-control" })
+            </div>
+            <div class="form-group" style="padding-right:25px">
+                @Html.CheckBoxFor(m => m.CallEnabled)
+                @Html.LabelFor(m => m.CallTime)
+                @Html.DropDownListFor(m => m.CallTime, Model.AvailableCallTimes, "Select", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <br />
+
+        <div>
+            <button id="EditBrandNotificationBtn" type="button" class="btn btn-success" data-toggle="modal">Brand Setup</button>
+            <button id="EditLevel1NotificationBtn" data-button="1" type="button" class="btn btn-primary" data-toggle="modal">Level 1 Setup</button>
+            <button id="EditLevel2NotificationBtn" data-button="2" type="button" class="btn btn-primary" data-toggle="modal">Level 2 Setup</button>
+            <button id="EditLevel3NotificationBtn" data-button="3" type="button" class="btn btn-primary" data-toggle="modal">Level 3 Setup</button>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <div id="NotificationsTableSpinner">
+        <img src="@Url.Content("~/Content/Images/dots.gif")">
+    </div>
+
+    <div id="NotificationsTableContainer" style="display:none">
+        <table id="NotificationsTable" style="width:100%" class="table table-striped table-bordered table-condensed table-hover">
+            <thead style="background: white">
+                <tr>
+                    <th style="text-align: center">Shop ID</th>
+                    <th style="text-align: center">Local Store ID</th>
+                    <th style="text-align: center">Store Status</th>
+                    <th style="text-align: center">Exclude Email</th>
+                    <th style="text-align: center">Exclude Call</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+<div class="modal fade" id="EditNotificationModal" data-backdrop="static" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div id="EditNotificationPartialView"></div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/driven.app.brandperiodsalesreporting")
+    @Scripts.Render("~/bundles/driven.app.brandperiodsalesreporting.notification2")
+}

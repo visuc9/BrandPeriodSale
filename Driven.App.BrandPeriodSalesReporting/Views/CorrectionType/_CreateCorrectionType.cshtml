@@ -1,0 +1,47 @@
+﻿@using Driven.App.BrandPeriodSalesReporting.Models
+@using Driven.App.BrandPeriodSalesReporting.Helpers
+
+@model CreateCorrectionTypeViewModel
+
+<div class="modal-content">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add Correction Type</h4>
+    </div>
+
+    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST" }))
+    {
+
+        <div class="modal-body">
+            @Html.AntiForgeryToken()
+            @Html.Hidden("DialogResult", (string)Convert.ToString(ViewBag.DialogResult ?? string.Empty))
+            @Html.Partial("_ValidationSummary")
+
+            <fieldset class="form-group">
+                @Html.LabelFor(m => m.CorrectionTypeId)
+                @Html.TextBoxFor(m => m.CorrectionTypeId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CorrectionTypeId)
+            </fieldset>
+
+            <fieldset class="form-group">
+                @Html.LabelFor(m => m.CorrectionTypeCodeId)
+                @Html.TextBoxFor(m => m.CorrectionTypeCodeId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CorrectionTypeCodeId)
+            </fieldset>
+
+            <fieldset class="form-group">
+                @Html.LabelFor(m => m.CorrectionTypeDescription)
+                @Html.TextBoxFor(m => m.CorrectionTypeDescription, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CorrectionTypeDescription)
+            </fieldset>
+        </div>
+
+        <div class="modal-footer">
+            <button id="SaveBtn" class="btn btn-primary" name="submit" type="submit">Save</button>
+            <button type="button" class="btn btn-inverse" data-dismiss="modal">Cancel</button>
+        </div>
+
+    }
+
+</div>

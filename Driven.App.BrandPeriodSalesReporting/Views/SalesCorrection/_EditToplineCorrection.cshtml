@@ -1,0 +1,121 @@
+﻿@using Driven.App.BrandPeriodSalesReporting.Models
+@using Driven.App.BrandPeriodSalesReporting.Helpers
+
+@model EditToplineCorrectionViewModel
+
+<div class="modal-content">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 id="ToplineModalTitle" class="modal-title">Submit Sales Correction</h4>
+    </div>
+
+    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST" }))
+    {
+
+        <div class="modal-body">
+            @Html.AntiForgeryToken()
+            @Html.Hidden("DialogResult", (string)Convert.ToString(ViewBag.DialogResult ?? string.Empty))
+            @Html.Partial("_ValidationSummary")
+
+            <div style="width:50%">
+                <fieldset class="form-group">
+                    @Html.LabelFor(m => m.LocalStoreId)
+                    @Html.TextBoxFor(m => m.LocalStoreId, new { @class = "form-control", @readonly = "readonly" })
+                </fieldset>
+
+                <fieldset class="form-group">
+                    @Html.LabelFor(m => m.CorrectionType)
+                    @Html.DropDownListFor(m => m.CorrectionType, Model.CorrectionTypes, "Select", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CorrectionType)
+                </fieldset>
+            </div>
+
+            <fieldset class="form-group">
+                @Html.LabelFor(m => m.Reason)
+                @Html.TextBoxFor(m => m.Reason, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Reason)
+            </fieldset>
+            <table class="table table-condensed" style="table-layout: fixed; margin-bottom: 0px">
+                <thead>
+                    <tr>
+                        <th>@Html.LabelFor(m => m.ProductGroups)</th>
+                        <th>@Html.LabelFor(m => m.NetSales)</th>
+                        <th>@Html.LabelFor(m => m.NetSalesCorrection)</th>
+                        <th>@Html.LabelFor(m => m.TotalTickets)</th>
+                        <th>@Html.LabelFor(m => m.TotalTicketsCorrection)</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="div-table-content" style="height: 230px; overflow-y: auto;">
+                <table class="table table-condensed" style="table-layout: fixed">
+                    <tbody>
+                        @for (int i = 0; i < Model.ProductGroups.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.HiddenFor(m => m.ProductGroups[i].ProdGrpID)
+                                    @Html.HiddenFor(m => m.ProductGroups[i].ProdSubGrpID)
+                                    @Html.HiddenFor(m => m.ProductGroups[i].BPSR_ProdGrpID)
+                                    @Model.ProductGroups[i].Name
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.ProductGroups[i].NetSales, new { @class = "form-control", @readonly = "readonly" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.ProductGroups[i].NetSalesCorrection, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.ProductGroups[i].NetSalesCorrection)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.ProductGroups[i].TotalTickets, new { @class = "form-control", @readonly = "readonly" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.ProductGroups[i].TotalTicketsCorrection, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.ProductGroups[i].TotalTicketsCorrection)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <table class="table table-condensed" style="table-layout: fixed">
+                <tfoot>
+                    <tr>
+                        <td>Store Total</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.NetSales, new { @class = "form-control", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.NetSalesCorrection, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.NetSalesCorrection)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.TotalTickets, new { @class = "form-control", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.TotalTicketsCorrection, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.TotalTicketsCorrection)
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+
+        <div class="modal-footer">
+            @Html.HiddenFor(m => m.RequestId)
+            @Html.HiddenFor(m => m.ToplineId)
+            @Html.HiddenFor(m => m.Title)
+
+            <div class="pull-left">
+                @*@Html.LabelFor(m => m.SalesTypeDescription)
+                @Model.SalesTypeDescription*@
+                @Html.HiddenFor(m => m.SalesTypeId)
+            </div>
+            <button id="SaveBtn" class="btn btn-primary" name="submit" type="button">Submit Correction</button>
+            <button type="button" class="btn btn-inverse" data-dismiss="modal">Cancel</button>
+        </div>
+
+    }
+
+</div>

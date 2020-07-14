@@ -1,0 +1,49 @@
+﻿@using Driven.App.BrandPeriodSalesReporting.Models
+@using Driven.App.BrandPeriodSalesReporting.Helpers
+
+@model EditLevelNotification2ViewModel
+
+<div class="modal-content">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 id="LevelTitle" class="modal-title">Non-Receipt of Sales - Level</h4>
+    </div>
+
+    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST" }))
+    {
+        @Html.HiddenFor(m => m.Level)
+        @Html.HiddenFor(m => m.SubBrandId)
+        @Html.HiddenFor(m => m.NotificationId)
+
+        <div class="modal-body">
+            @Html.AntiForgeryToken()
+            @Html.Hidden("DialogResult", (string)Convert.ToString(ViewBag.DialogResult ?? string.Empty))
+            @Html.Partial("_ValidationSummary")
+
+            <fieldset class="form-group">
+                @Html.LabelFor(m => m.EmailSubject)
+                @Html.TextBoxFor(m => m.EmailSubject, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.EmailSubject)
+            </fieldset>
+
+            <fieldset class="form-group">
+                @Html.LabelFor(m => m.EmailBody)
+                @Html.TextBoxFor(m => m.EmailBody, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.EmailBody)
+            </fieldset>
+
+            <fieldset class="form-group">
+                @Html.LabelFor(m => m.CallText)
+                @Html.TextBoxFor(m => m.CallText, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CallText)
+            </fieldset>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="submit">Save</button>
+            <button type="button" class="btn btn-inverse" data-dismiss="modal">Cancel</button>
+        </div>
+    }
+
+</div>

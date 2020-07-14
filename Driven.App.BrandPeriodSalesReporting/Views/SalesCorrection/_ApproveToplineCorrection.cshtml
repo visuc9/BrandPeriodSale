@@ -1,0 +1,62 @@
+﻿@using Driven.App.BrandPeriodSalesReporting.Models
+@using Driven.App.BrandPeriodSalesReporting.Helpers
+
+@model ApproveToplineCorrectionViewModel
+
+<div class="modal-content">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Approve/Deny Sales Correction</h4>
+    </div>
+
+    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST" }))
+    {
+        <div class="modal-body">
+            @Html.AntiForgeryToken()
+            @Html.Hidden("DialogResult", (string)Convert.ToString(ViewBag.DialogResult ?? string.Empty))
+            @Html.Partial("_ValidationSummary")
+
+            <fieldset class="form-group">
+                @Html.LabelFor(m => m.Title)
+                <div>
+                    @Model.Title
+                </div>
+            </fieldset>
+
+            <div style="width:50%">
+                <fieldset class="form-group">
+                    @Html.LabelFor(m => m.ApproveStatus)
+                    @Html.DropDownListFor(m => m.ApproveStatus, Model.ApproveStatusIds, "Select", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ApproveStatus)
+                </fieldset>
+
+                <div id="denialContainer">
+                    <fieldset class="form-group">
+                        @Html.LabelFor(m => m.Denial)
+                        @Html.DropDownListFor(m => m.Denial, Model.Denials, "Select", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Denial)
+                    </fieldset>
+                </div>
+            </div>
+            <div id="denialDescriptionContainer">
+                <fieldset class="form-group">
+                    @Html.LabelFor(m => m.DenialDescription)
+                    @Html.TextBoxFor(m => m.DenialDescription, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.DenialDescription)
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            @Html.HiddenFor(m => m.RequestId)
+            @Html.HiddenFor(m => m.ToplineId)
+            @Html.HiddenFor(m => m.PeriodEndDate)
+            @Html.HiddenFor(m => m.LocalStoreId)
+
+            <button id="SaveBtn" class="btn btn-primary" name="submit" type="submit">Save</button>
+            <button type="button" class="btn btn-inverse" data-dismiss="modal">Cancel</button>
+        </div>
+    }
+
+</div>
